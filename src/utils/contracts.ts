@@ -2,7 +2,6 @@ import { chain } from "@/app/chain";
 import { client } from "@/app/client";
 import { getContract } from "thirdweb";
 import { ChainCarsABI } from "./ChainCarsABI";
-import { USDTABI } from "./USDTABI";
 
 export const ChainCarsAddress = "0xcD4C26f72D5E9f1ffDfb8ff5cB50cD11F01CEfB2"
 

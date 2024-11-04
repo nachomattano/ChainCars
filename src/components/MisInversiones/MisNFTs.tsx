@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { ChainCarsContract } from "@/utils/contracts"
-import { Center, Spinner } from "@chakra-ui/react"
 import Image from "next/image"
 import { useActiveAccount, useReadContract } from "thirdweb/react"
 import { Button } from "../ui/button"
@@ -13,13 +12,13 @@ import { Badge } from "../ui/badge"
 export default function MisNFTs() {
     const address = useActiveAccount()
 
-    const { data: carsBalance, isPending: isPendingBalance } = useReadContract({
+    const { data: carsBalance } = useReadContract({
         contract: ChainCarsContract,
         method: "getCarsOwnedByWallet",
         params: [address ? address.address : "0x0000000000000000000000000000000000000000"]
     })
 
-    const { data: allCars, isPending: isPendingCars } = useReadContract({
+    const { data: allCars } = useReadContract({
         contract: ChainCarsContract,
         method: "getAllCars",
         params: []
@@ -47,7 +46,6 @@ export default function MisNFTs() {
                     const car = allCars?.[carIndex];
 
                     if (!car) {
-                        // Manejar el caso donde 'car' es undefined
                         return null;
                     }
 

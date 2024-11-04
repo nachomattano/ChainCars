@@ -9,7 +9,7 @@ import YARIS from "@/assets/yaris.jpeg"
 import VENTO from "@/assets/vento.jpg"
 import { Badge } from "@/components/ui/badge"
 import { approve } from "thirdweb/extensions/erc20";
-import { prepareContractCall, sendTransaction, toEther, toWei, waitForReceipt } from "thirdweb"
+import { prepareContractCall, sendTransaction, toEther, waitForReceipt } from "thirdweb"
 import { client } from "../client"
 import { chain } from "../chain"
 import { Progress } from "@/components/ui/progress"
