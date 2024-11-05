@@ -6,7 +6,7 @@ import { StakingABI } from "./StakingABI";
 
 export const ChainCarsAddress = "0xe37722F3c1B081Cae349c842b665E45d2dd0AD9A"
 
-export const StakingAddress = "0x3Fd0F32FbC54a24ACAB80135c497399404decA9c"
+export const StakingAddress = "0xc5c5E0549Fe9Ee5a0a378C5f1f35E50a3608463C"
 
 export const ChainCarsContract = getContract({
     client: client,

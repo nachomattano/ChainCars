@@ -11,7 +11,6 @@ import CLASICO from "@/assets/clasico.webp";
 import DEPORTIVO from "@/assets/deportivo.webp";
 import LUJOSO from "@/assets/lujoso.webp";
 import { useState } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { prepareContractCall, sendTransaction, waitForReceipt } from "thirdweb";
 import { client } from "../client";
 import { chain } from "../chain";
@@ -30,22 +29,22 @@ export default function Rendimientos() {
 
     const categories = [
         "Estándar",
-        "Clásico",
         "Deportivo",
+        "Clásico",
         "Lujoso"
     ];
 
     const images = [
         ESTANDAR,
-        CLASICO,
         DEPORTIVO,
+        CLASICO,
         LUJOSO
     ];
 
     const apy = [
         6,
-        10,
         8,
+        10,
         12
     ]
 
