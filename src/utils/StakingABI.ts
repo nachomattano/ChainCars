@@ -288,9 +288,14 @@ export const StakingABI = [
 						"internalType": "bool",
 						"name": "unstaked",
 						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewards",
+						"type": "uint256"
 					}
 				],
-				"internalType": "struct StakingRESTTFY.StakingInfo[]",
+				"internalType": "struct StakingChainCars.StakingInfoWithRewards[]",
 				"name": "",
 				"type": "tuple[]"
 			}

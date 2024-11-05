@@ -4,9 +4,9 @@ import { getContract } from "thirdweb";
 import { ChainCarsABI } from "./ChainCarsABI";
 import { StakingABI } from "./StakingABI";
 
-export const ChainCarsAddress = "0xcD4C26f72D5E9f1ffDfb8ff5cB50cD11F01CEfB2"
+export const ChainCarsAddress = "0xe37722F3c1B081Cae349c842b665E45d2dd0AD9A"
 
-export const StakingAddress = "0x5Fe445Cc75416BA948C252A0aED9AD688af04e2B"
+export const StakingAddress = "0x3Fd0F32FbC54a24ACAB80135c497399404decA9c"
 
 export const ChainCarsContract = getContract({
     client: client,

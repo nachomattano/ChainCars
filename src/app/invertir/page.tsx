@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import YARIS from "@/assets/yaris.jpeg"
 import VENTO from "@/assets/vento.jpg"
+import MUSTANG from "@/assets/mustang.webp"
+import ROLSSROYCE from "@/assets/rollsroyce.jpg"
 import { Badge } from "@/components/ui/badge"
 import { approve } from "thirdweb/extensions/erc20";
 import { prepareContractCall, sendTransaction, toEther, waitForReceipt } from "thirdweb"
@@ -24,14 +26,16 @@ export default function Invertir() {
     })
 
     const images = [
+        VENTO,
         YARIS,
-        VENTO
+        MUSTANG,
+        ROLSSROYCE
     ]
 
     const categories = [
         "Estándar",
-        "Clasico",
         "Deportivo",
+        "Clasico",
         "Lujoso"
     ]
 
@@ -101,7 +105,6 @@ export default function Invertir() {
                         <Badge className="bg-[#a6c36f] text-black">{categories[Number(c.category) - 1]}</Badge>
                         <h3 className="font-semibold text-lg text-black">{c.name}</h3>
                         <p className="text-gray300 text-sm">{c.description}</p>
-                        <Progress value={40} max={100} className="text-white mt-3"/>
                         <Button onClick={() => handleTransaction(toEther(c.price), index + 1)} className="w-full mt-3">Comprar - {toEther(c.price)} USDT</Button>
                     </CardFooter>
                 </Card>

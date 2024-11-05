@@ -273,6 +273,19 @@ export const ChainCarsABI = [
 	},
 	{
 		"inputs": [],
+		"name": "MAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "USDT",
 		"outputs": [
 			{
@@ -685,6 +698,25 @@ export const ChainCarsABI = [
 	{
 		"inputs": [],
 		"name": "totalCars",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "totalMinted",
 		"outputs": [
 			{
 				"internalType": "uint256",

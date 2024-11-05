@@ -1,13 +1,18 @@
 'use client'
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { ChainCarsContract } from "@/utils/contracts"
+import { ChainCarsContract, StakingAddress, StakingContract } from "@/utils/contracts"
 import Image from "next/image"
 import { useActiveAccount, useReadContract } from "thirdweb/react"
 import { Button } from "../ui/button"
 import YARIS from "@/assets/yaris.jpeg"
 import VENTO from "@/assets/vento.jpg"
+import MUSTANG from "@/assets/mustang.webp"
+import ROLSSROYCE from "@/assets/rollsroyce.jpg"
 import { Badge } from "../ui/badge"
+import { client } from "@/app/client"
+import { chain } from "@/app/chain"
+import { prepareContractCall, sendTransaction, waitForReceipt } from "thirdweb"
 
 export default function MisNFTs() {
     const address = useActiveAccount()
@@ -25,18 +30,67 @@ export default function MisNFTs() {
     })
 
     const images = [
+        VENTO,
         YARIS,
-        VENTO
+        MUSTANG,
+        ROLSSROYCE
     ]
 
     const categories = [
         "Estándar",
-        "Clásico",
         "Deportivo",
+        "Clasico",
         "Lujoso"
     ]
 
     console.log(allCars)
+
+    const handleStaking = async (id: number) => {
+        if (address) {
+            try {
+                const app = prepareContractCall({
+                    contract: ChainCarsContract,
+                    method: "setApprovalForAll",
+                    params: [StakingAddress, true]
+                })
+
+                const { transactionHash: appHash } = await sendTransaction({
+                    transaction: app,
+                    account: address
+                })
+
+                const approveReceipt = await waitForReceipt({
+                    client: client,
+                    chain: chain,
+                    transactionHash: appHash
+                })
+
+                console.log(approveReceipt)
+
+                const transaction = prepareContractCall({
+                    contract: StakingContract,
+                    method: "stake",
+                    params: [BigInt(id), BigInt(1)]
+                })
+
+                const { transactionHash: stakeHash } = await sendTransaction({
+                    transaction,
+                    account: address
+                })
+
+                const stakeReceipt = await waitForReceipt({
+                    client: client,
+                    chain: chain,
+                    transactionHash: stakeHash
+                })
+
+                console.log(stakeReceipt)
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
     return (
         <div className="mt-10">
@@ -67,7 +121,7 @@ export default function MisNFTs() {
                                 <h3 className="font-semibold text-lg text-black">
                                     {car.name}
                                 </h3>
-                                <Button className="w-full mt-3">Stakear</Button>
+                                <Button onClick={() => handleStaking(Number(c))} className="w-full">Stakear</Button>
                             </CardFooter>
                         </Card>
                     );

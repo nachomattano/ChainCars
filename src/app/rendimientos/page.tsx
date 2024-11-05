@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { prepareContractCall, sendTransaction, waitForReceipt } from "thirdweb";
 import { client } from "../client";
 import { chain } from "../chain";
+import Link from "next/link";
 
 export default function Rendimientos() {
     const [stakeAmounts, setStakeAmounts] = useState(Array(4).fill(1));
@@ -40,6 +41,13 @@ export default function Rendimientos() {
         DEPORTIVO,
         LUJOSO
     ];
+
+    const apy = [
+        6,
+        10,
+        8,
+        12
+    ]
 
     const handleStaking = async (index: number) => {
         if (address) {
@@ -109,29 +117,16 @@ export default function Rendimientos() {
                                 {category}
                             </h3>
                             <Badge className="bg-[#a6c36f] text-black">
-                                APY {6 + index * 2}% {/* Ajuste del APY para cada categoría */}
+                                APY {apy[index]}% 
                             </Badge>
-                            <div className="flex items-center gap-4 w-full mt-3">
-                                <Select
-                                    value={stakeAmounts[index].toString()}
-                                    onValueChange={(value) => handleSelectChange(index, parseInt(value))}
-                                >
-                                    <SelectTrigger className="w-[60px]">
-                                        <SelectValue placeholder="Cantidad" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {[...Array(10)].map((_, i) => (
-                                            <SelectItem key={i} value={(i + 1).toString()}>
-                                                {i + 1}
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                                <Button onClick={() => handleStaking(index)} className="flex-1">Stakear</Button>
-                            </div>
                         </CardFooter>
                     </Card>
                 ))}
+            </div>
+            <div className="flex justify-center mt-4">
+                <Link href={'/misinversiones'}>
+                    <Button>Stakear</Button>
+                </Link>
             </div>
         </div>
     );

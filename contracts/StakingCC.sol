@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "ChainCars.sol";
 
-contract StakingRESTTFY is Ownable {
+contract StakingChainCars is Ownable {
     ChainCars public CC;
     IERC20 public USDT;
 
